@@ -1,4 +1,5 @@
 ﻿using apbd_kl_2.Data;
+using apbd_kl_2.DTOs;
 using apbd_kl_2.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -49,5 +50,17 @@ public class DbService : IDbService
             .ThenInclude(e => e.Title)
             .Where(e => e.Id.Equals(id))
             .ToListAsync();
+    }
+
+    public async Task AddItem(AddItemDTO getBackpackDto)
+    {
+        var backpack = new Backpacks
+        {
+            Amount = getBackpackDto.Amount,
+            CharacterId = getBackpackDto.CharacterId,
+            ItemId = getBackpackDto.Itemid
+        };
+        await _context.AddAsync(backpack);
+        await _context.SaveChangesAsync();
     }
 }

@@ -1,4 +1,5 @@
-﻿using apbd_kl_2.Models;
+﻿using apbd_kl_2.DTOs;
+using apbd_kl_2.Models;
 
 namespace apbd_kl_2.Services;
 
@@ -11,6 +12,8 @@ public interface IDbService
     Task<int> GetItemWeight(int itemId);
 
     Task<int> GetCharacterFreeWeight(int characterId);
+
+    Task AddItem(AddItemDTO getBackpackDto);
 
     Task<ICollection<Characters>> GetCharacterData(int id);
 }

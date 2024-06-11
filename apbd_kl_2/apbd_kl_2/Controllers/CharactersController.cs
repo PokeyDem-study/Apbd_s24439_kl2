@@ -65,6 +65,18 @@ public class CharactersController : ControllerBase
             return Forbid("Dont have enough space");
         }
         
+        foreach (var item in itemIds)
+        {
+            _dbService.AddItem(new AddItemDTO
+            {
+                Itemid = item,
+                CharacterId = id,
+                Amount = 1
+                
+            });
+        }
+        
+        
         return Ok();
     }
 }
